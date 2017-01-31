@@ -24,6 +24,7 @@ end
 do
     local in_error = false
     awesome.connect_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
         if in_error then return end
         in_error = true
 
@@ -37,12 +38,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_configuration_dir() .. "/solarizr/theme.lua")
+beautiful.init(awful.util.get_configuration_dir() .. "solarizr/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
-editor = "subl3"
-editor_cmd = editor
+terminal = "xterm"
+editor = os.getenv("EDITOR") or "nano"
+editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -202,19 +203,147 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+        height = 20,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.align.horizontal,
             mylauncher,
             s.mytaglist,
-            s.mypromptbox,
+            {
+              {
+                {
+                  {
+                    widget = s.mypromptbox,
+                  },
+                  left   = 15,
+                  right  = 15,
+                  top    = 0,
+                  bottom = 0,
+                  widget = wibox.container.margin
+                },
+                bg = beautiful.solarized.base02,
+                set_shape = function(cr, width, height)
+                  gears.shape.powerline(cr, width, height, (height / 2))
+                  -- gears.shape.transform(shape.powerline) : translate(0, 25) (cr,width,height, (height / 2 ) * - 1)
+                end,
+                widget = wibox.container.background
+              },
+              left   = 0,
+              right  = -13,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+            
         },
-        s.mytasklist, -- Middle widget
+        {
+          layout = wibox.layout.flex.horizontal,
+            {
+              {
+                widget = s.mytasklist
+              },
+              left   = 15,
+              right  = 10,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+        },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+            
+            {
+              {
+                {
+                  {
+                    widget = wibox.widget.systray()
+                  },
+                  left   = 15,
+                  right  = 15,
+                  top    = 2,
+                  bottom = 2,
+                  widget = wibox.container.margin
+                },
+                bg = beautiful.solarized.base02,
+                set_shape = function(cr, width, height)
+                  gears.shape.powerline(cr, width, height, (height / 2) * (-1))
+                  -- gears.shape.transform(shape.powerline) : translate(0, 25) (cr,width,height, (height / 2 ) * - 1)
+                end,
+                widget = wibox.container.background
+              },
+              left   = 0,
+              right  = -13,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+            {
+              {
+                {
+                  {
+                    widget = mytextclock
+                  },
+                  left   = 10,
+                  right  = 10,
+                  top    = 0,
+                  bottom = 0,
+                  widget = wibox.container.margin
+                },
+                bg = beautiful.solarized.base03,
+                set_shape = function(cr, width, height)
+                  gears.shape.powerline(cr, width, height, (height / 2) * (-1))
+                  -- gears.shape.transform(shape.powerline) : translate(0, 25) (cr,width,height, (height / 2 ) * - 1)
+                end,
+                widget = wibox.container.background
+              },
+              left   = 0,
+              right  = -13,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+            {
+              {
+                {
+                  {
+                    widget = mykeyboardlayout
+                  },
+                  left   = 10,
+                  right  = 10,
+                  top    = 0,
+                  bottom = 0,
+                  widget = wibox.container.margin
+                },
+                bg = beautiful.solarized.blue,
+                fg = beautiful.solarized.base3,
+                set_shape = function(cr, width, height)
+                  gears.shape.powerline(cr, width, height, (height / 2) * (-1))
+                  -- gears.shape.transform(shape.powerline) : translate(0, 25) (cr,width,height, (height / 2 ) * - 1)
+                end,
+                widget = wibox.container.background
+              },
+              left   = 0,
+              right  = -13,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+            {
+              {
+                {
+                  widget = s.mylayoutbox
+                },
+                left   = 12,
+                right  = 2,
+                top    = 2,
+                bottom = 2,
+                widget = wibox.container.margin
+              },
+              bg = beautiful.solarized.green,
+              set_shape = function(cr, width, height)
+                gears.shape.rectangular_tag(cr, width, height)
+              end,
+              widget = wibox.container.background
+            },
         },
     }
 end)
@@ -464,7 +593,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

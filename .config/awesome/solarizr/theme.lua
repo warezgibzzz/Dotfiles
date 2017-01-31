@@ -23,7 +23,9 @@ solarized.colors.blue = "#268bd2"
 solarized.colors.cyan = "#2aa198"
 solarized.colors.green = "#859900"
 
-theme.font          = "DejaVu Sans Mono for Powerline 8"
+theme.solarized = solarized.colors
+
+theme.font          = "Ubuntu Mono derivative Powerline 12"
 
 theme.bg_normal     = solarized.colors.base03
 theme.bg_focus      = solarized.colors.base02
@@ -51,7 +53,12 @@ theme.border_marked = "#91231c"
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- Example:
---theme.taglist_bg_focus = "#ff0000"
+theme.tasklist_bg_focus = solarized.colors.base03
+theme.tasklist_fg_focus = solarized.colors.green
+theme.taglist_bg_focus = solarized.colors.base03
+theme.taglist_fg_focus = solarized.colors.green
+theme.taglist_bg_urgent = solarized.colors.base03
+theme.taglist_fg_urgent = solarized.colors.red
 
 -- Display the taglist squares
 theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
@@ -96,7 +103,7 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/usr/share/awesome/themes/default/background.png"
+theme.wallpaper = "~/.config/awesome/themes/solarizr/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"

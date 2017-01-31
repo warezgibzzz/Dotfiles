@@ -59,21 +59,10 @@
 *color15:                  S_base3
 
 !! Xterm
-XTerm*faceName:            xft:DejaVu Sans Mono for Powerline:style=Book:pixelsize=12:antialias=true
+XTerm*faceName:            xft:Ubuntu Mono derivative Powerline:pixelsize=13:antialias=true
 XTerm*selectToClipboard:   true
 
-!! Rxvt-unicode
-URxvt.scrollBar:           false
-URxvt.saveLines:           8192
-URxvt.internalBorder:      0
-URxvt.externalBorder:      0
-URxvt.highlightSelection:  true
-URxvt.loginShell:          true
-URxvt.letterSpace:         0
-URxvt.font:                xft:DejaVu Sans Mono for Powerline:pixelsize=12
-URxvt.boldFont:            xft:DejaVu Sans Mono for Powerline:style=Bold:pixelsize=12
-URxvt.mapAlert:            true
-
+!! Xft
 Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
@@ -81,3 +70,40 @@ Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 Xft.autohint: 0
+
+!! Rxvt-unicode
+URxvt.perl-ext-common:     		tabbed
+URxvt.perl-ext:            		default,url-select
+URxvt.keysym.M-u:            	perl:url-select:select_next
+URxvt.url-select.launcher:   	google-chrome-beta
+URxvt.url-select.underline:  	true
+
+URxvt.scrollBar:           		false
+URxvt.saveLines:           		8192
+
+URxvt.internalBorder:      		0
+URxvt.externalBorder:      		0
+URxvt.highlightSelection:  		true
+
+URxvt.loginShell:          		true
+
+URxvt.letterSpace:         		0
+URxvt.font:                		xft:Ubuntu Mono derivative Powerline:pixelsize=13:antialias=true
+URxvt.boldFont:            		xft:Ubuntu Mono derivative Powerline Bold:pixelsize=13:antialias=true
+URxvt.mapAlert:            		true
+
+URxvt.secondaryScreen:     		1
+URxvt.secondaryScroll:     		0
+
+URxvt.tabbed.new-button:        no
+URxvt.tabbed.tabbar-fg: 		7
+URxvt.tabbed.tabbar-bg: 		0
+URxvt.tabbed.tab-fg: 			12
+URxvt.tabbed.tab-bg: 			8
+URxvt.tabbed.bell-tab-fg: 		1
+URxvt.tabbed.bell-tab-bg: 		8
+URxvt.tabbed.bell-fg:     		1
+URxvt.tabbed.bell-bg:     		8
+URxvt.tabbed.title-fg:    		7
+URxvt.tabbed.title-bg:    		0
+URxvt.transparent: 				false
