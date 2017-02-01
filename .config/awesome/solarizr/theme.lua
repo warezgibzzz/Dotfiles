@@ -124,7 +124,7 @@ theme.layout_cornerne = "/usr/share/awesome/themes/default/layouts/cornernew.png
 theme.layout_cornersw = "/usr/share/awesome/themes/default/layouts/cornersww.png"
 theme.layout_cornerse = "/usr/share/awesome/themes/default/layouts/cornersew.png"
 
-theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
+theme.awesome_icon = "~/.config/awesome/solarizr/logo-arch.svg"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
