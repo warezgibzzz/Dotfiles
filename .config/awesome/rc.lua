@@ -38,7 +38,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_configuration_dir() .. "solarizr/theme.lua")
+beautiful.init(awful.util.get_configuration_dir() .. "/solarizr/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -60,15 +60,6 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -203,16 +194,47 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-        height = 20,
         { -- Left widgets
             layout = wibox.layout.align.horizontal,
-            mylauncher,
-            s.mytaglist,
             {
               {
                 {
                   {
-                    widget = s.mypromptbox,
+                    widget = mylauncher
+                  },
+                  left   = 20,
+                  right  = 15,
+                  top    = 5,
+                  bottom = 5,
+                  widget = wibox.container.margin
+                },
+                bg = beautiful.solarized.blue,
+                set_shape = function(cr, width, height)
+                  gears.shape.powerline(cr, width, height)
+                end,
+                widget = wibox.container.background
+              },
+              left   = -15,
+              right  = 0,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+            {
+              {
+                widget = s.mytaglist,
+              },
+              left   = 5,
+              right  = 0,
+              top    = 0,
+              bottom = 0,
+              widget = wibox.container.margin
+            },
+            {
+              {
+                {
+                  {
+                    widget = s.mypromptbox
                   },
                   left   = 15,
                   right  = 15,
@@ -233,10 +255,9 @@ awful.screen.connect_for_each_screen(function(s)
               bottom = 0,
               widget = wibox.container.margin
             },
-            
         },
         {
-          layout = wibox.layout.flex.horizontal,
+          layout = wibox.layout.align.horizontal,
             {
               {
                 widget = s.mytasklist
@@ -246,7 +267,7 @@ awful.screen.connect_for_each_screen(function(s)
               top    = 0,
               bottom = 0,
               widget = wibox.container.margin
-            },
+            }
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
@@ -314,7 +335,7 @@ awful.screen.connect_for_each_screen(function(s)
                   widget = wibox.container.margin
                 },
                 bg = beautiful.solarized.blue,
-                fg = beautiful.solarized.base3,
+                fg = beautiful.solarized.base03,
                 set_shape = function(cr, width, height)
                   gears.shape.powerline(cr, width, height, (height / 2) * (-1))
                   -- gears.shape.transform(shape.powerline) : translate(0, 25) (cr,width,height, (height / 2 ) * - 1)

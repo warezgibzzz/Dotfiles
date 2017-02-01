@@ -88,5 +88,5 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source $HOME/.phpbrew/bashrc
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.gem/ruby/2.4.0/bin" # Add RVM to PATH for scripting

@@ -55,14 +55,15 @@ theme.border_marked = "#91231c"
 -- Example:
 theme.tasklist_bg_focus = solarized.colors.base03
 theme.tasklist_fg_focus = solarized.colors.green
-theme.taglist_bg_focus = solarized.colors.base03
-theme.taglist_fg_focus = solarized.colors.green
+theme.taglist_bg = solarized.colors.red
+theme.taglist_bg_focus = solarized.colors.green
+theme.taglist_fg_focus = solarized.colors.base03
 theme.taglist_bg_urgent = solarized.colors.base03
 theme.taglist_fg_urgent = solarized.colors.red
 
 -- Display the taglist squares
-theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
-theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
+-- theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
+-- theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -103,7 +104,7 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/.config/awesome/themes/solarizr/background.png"
+theme.wallpaper = "~/.config/awesome/solarizr/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
